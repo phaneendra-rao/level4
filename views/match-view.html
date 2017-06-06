@@ -1,0 +1,48 @@
+<div class="col-md-12" style="margin-top:100px;">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center" style="font-weight:700;">
+          {{singleMatch.matchName}}
+        </div>
+        <div class="panel-body">
+
+            <table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>Team 1 (CODE)</th>
+                  <th>Score 1</th>
+                  <th>Date</th>
+                  <th>Team 2 (CODE)</th>
+                  <th>Score 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{singleMatch.matchData.team1.name}} ({{singleMatch.matchData.team1.code}})</td>
+                  <td>{{singleMatch.matchData.score1}}</td>
+                  <td>{{singleMatch.matchData.date}}</td>
+                  <td>{{singleMatch.matchData.team2.name}} ({{singleMatch.matchData.team2.code}})</td>
+                  <td>{{singleMatch.matchData.score2}}</td>
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+          <div class="panel-footer">
+
+              <h5 style="display:inline;"><b><i class="fa fa-trophy" aria-hidden="true"></i> Team won :</b> {{singleMatch.teamWon}} </h5> | <h5 style="display:inline;"><b>Team Lose :</b> {{singleMatch.teamLose}}</h5>
+
+           <hr style="margin-top:0px; margin-bottom:6px;">
+
+          </div>
+        </div>
+        <br>
+        <a ng-href="{{singleMatch.goBackBtn}}" class="btn btn-primary"><b><i class="fa fa-arrow-left" aria-hidden="true"></i> </b>Go back</a>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+
+  <div class="col-md-12" style="margin-top:100px;">
+  <div class="row">
+    <div class="col-md-3" style="position:fixed;">
+      <div class="panel panel-primary">
+        <div class="panel-heading" style="">
+          <h4 style="font-weight:400;margin-top:0px;margin-bottom:0px;" class="text-center"><b><i class="fa fa-filter" aria-hidden="true"></i> </b>Filters</h4>
+        </div>
+        <div class="panel-body">
+<br>
+                    <input type="text" class="form-control" placeholder="Search by team1 & team2" ng-model="searchTeams"><br>
+
+                    <input type="text" class="form-control" placeholder="Search by score 1" ng-model="searchScore1.score1"><br>
+                    <input type="text" class="form-control" placeholder="Search by score 2" ng-model="searchScore2.score2"><br>
+
+                    <input type="text" class="form-control" placeholder="Search by Date" ng-model="searchDate.date"><br>
+
+        </div>
+      </div>
+      <hr>
+      <a ng-href="#/matchStats/season1" class="btn btn-primary btn-block"><b><i class="fa fa-bar-chart"></i> </b>Team wise statistics 2015-2016</a>
+    </div>
+
+                <div class="col-md-8 col-md-offset-3">
+                  <div class="text-center">
+                    <h3>
+                     {{myMatch.allMatches.name}}
+                    </h3>
+                  </div>
+                    <hr>
+                    <div ng-repeat="round in myMatch.allMatches.rounds">
+                      <div class="panel panel-primary">
+                        <div class="panel-heading" style="font-weight:700;">
+                            {{round.name}}
+                        </div>
+                        <div class="panel-body">
+                          <table class="table table-condensed">
+                            <thead>
+                              <tr>
+                                <th>
+                                  Team 1
+                                </th>
+                                <th>
+                                  Score 1
+                                </th>
+                                <th>
+                                  Date
+                                </th>
+                                <th>
+                                  Team 2
+                                </th>
+                                <th>
+                                  Score 2
+                                </th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <a href="#">
+                              <tr ng-repeat="match in round.matches | filter:searchTeams | filter:searchScore1 | filter:searchScore2 | filter:searchDate">
+                                <td>{{match.team1.name}} ({{match.team1.code}})</td><td>{{match.score1}}</td><td>{{match.date}}</td><td>{{match.team2.name}} ({{match.team2.code}})</td><td>{{match.score2}}</td><td><a ng-href="#/match-view/season1/{{match.date}}/{{match.team1.code}}/{{match.team2.code}}" class="btn btn-sm btn-primary">View</a></td>
+                              </tr>
+                            </a>
+                            </tbody>
+
+
+                          </table>
+                        </div>
+
+                      </div>
+                    </div>
+
+                </div>
+
+  </div>
+
+
+</div>

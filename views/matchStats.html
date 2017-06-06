@@ -1,0 +1,35 @@
+<div class="col-md-12" style="margin-top:100px;">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+       <a ng-href="{{stats.goBackBtn}}" class="btn btn-primary"><b><i class="fa fa-arrow-left" aria-hidden="true"></i> </b>Go back</a>
+      <br/><br>
+      <div class="panel panel-primary">
+        <div class="panel-heading" style="font-weight:700;">
+          Team wise statistics
+        </div>
+        <div class="panel-body">
+          <table class="table table-condensed">
+            <thead>
+              <th>
+                S.No
+              </th>
+              <th>Team Name</th><th>Matches Played</th><th>Matches Won</th><th>Matches Draw</th><th>Matches Lose</th>
+            </thead>
+            <tbody ng-repeat="stat in stats.teamStats">
+              <tr>
+                <td>{{stat.Sno}}</td>
+                <td>{{stat.Team_name}}</td>
+                <td>{{stat.Matches_Played}}</td>
+                <td>{{stat.Matches_won}}</td>
+                <td>{{stat.Matches_draw}}</td>
+                <td>{{stat.Matches_lose}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
