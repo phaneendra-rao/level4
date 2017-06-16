@@ -149,10 +149,20 @@ myApp.controller('singleMatchViewController',['$http','$routeParams',function($h
   this.code1 = $routeParams.code1;
   this.code2 = $routeParams.code2;
 
-//  console.log(this.season);
-//  console.log(this.date);
-//  console.log(this.code1);
-//  console.log(this.code2);
+
+  this.matchName='';
+  this.team1Name='';
+  this.team1Code='';
+  this.team2Code='';
+  this.team2Name='';
+  this.team1Score='';
+  this.team2Score='';
+  this.matchDate='';
+
+ console.log(this.season);
+  console.log(this.date);
+  console.log(this.code1);
+  console.log(this.code2);
 
 if(this.season=='season1')
 {
@@ -186,31 +196,53 @@ if(this.season=='season2')
             {
               if(main.flag)
               {
-                for(var j=i; j<response.data.rounds[i].matches.length; j++)
+                for(var j=0; j<response.data.rounds[i].matches.length; j++)
                 {
                   if(main.flag)
                   {
-                    if(response.data.rounds[i].matches[j].date==main.date && response.data.rounds[i].matches[j].team1.code==main.code1 && response.data.rounds[i].matches[j].team2.code==main.code2)
+                    if((response.data.rounds[i].matches[j].date==main.date) && (response.data.rounds[i].matches[j].team1.code==main.code1) && (response.data.rounds[i].matches[j].team2.code==main.code2))
                     {
                       //console.log(response.data.rounds[i].matches[j].date);
                       //console.log(response.data.rounds[i].matches[j].team1.code);
                       //console.log(response.data.rounds[i].matches[j].team2.code);
                       //console.log("yes..! funny.. :)");
                       main.matchName=response.data.rounds[i].name;
-                      main.matchData=response.data.rounds[i].matches[j];
+                      main.team1Name=response.data.rounds[i].matches[j].team1.name;
+                      main.team1Code=response.data.rounds[i].matches[j].team1.code;
 
-                      if(response.data.rounds[i].matches[j].score1 > response.data.rounds[i].matches[j].score2)
+                      main.team2Name=response.data.rounds[i].matches[j].team2.name;
+                      main.team2Code=response.data.rounds[i].matches[j].team2.code;
+
+                      main.team1Score=response.data.rounds[i].matches[j].score1;
+                      main.team2Score=response.data.rounds[i].matches[j].score2;
+                      main.matchDate=response.data.rounds[i].matches[j].date;
+
+
+
+
+                      if(main.team1Score > main.team2Score)
                       {
-                        main.teamWon=response.data.rounds[i].matches[j].team1.name;
-                        main.teamLose=response.data.rounds[i].matches[j].team2.name;
+                        main.teamWon=main.team1Name;
+                        main.teamLose=main.team2Name;
+
                         //console.log(main.teamWon);
                         //console.log(main.teamLose);
                       }
 
-                      if(response.data.rounds[i].matches[j].score1 < response.data.rounds[i].matches[j].score2)
+                      if(main.team1Score < main.team2Score)
                       {
-                        main.teamWon=response.data.rounds[i].matches[j].team2.name;
-                        main.teamLose=response.data.rounds[i].matches[j].team1.name;
+                        main.teamWon=main.team2Name;
+                        main.teamLose=main.team1Name;
+
+                        //console.log(main.teamWon);
+                        //console.log(main.teamLose);
+                      }
+
+                      if(main.team1Score == main.team2Score)
+                      {
+                        main.teamWon='Draw Match';
+                        main.teamLose='Draw Match';
+
                         //console.log(main.teamWon);
                         //console.log(main.teamLose);
                       }
